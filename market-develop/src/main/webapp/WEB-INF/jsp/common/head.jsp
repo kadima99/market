@@ -81,10 +81,10 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath }/staff/flatform/sale/getall">销售信息</a>
                                     </li>
-                                    <li><a href="${pageContext.request.contextPath }/staff/flatform/cusretire/getall">顾客退货办理</a>
-                                    </li>
                                     <li>
-                                        <a href=""></a>
+                                        <a href="${pageContext.request.contextPath }/staff/flatform/sale/getfinish">完成订单</a>
+                                    </li>
+                                    <li><a href="${pageContext.request.contextPath }/staff/flatform/cusretire/getall">顾客退货办理</a>
                                     </li>
                                 </ul>
                             </li>

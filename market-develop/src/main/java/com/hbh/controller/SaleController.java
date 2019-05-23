@@ -78,6 +78,18 @@ public class SaleController {
         return "getall_sale";
 
     }
+
+    @RequestMapping("/getfinish")
+    public String getallnull_cus(ModelMap model,
+                             @RequestParam(defaultValue = "1", required = true, value = "pn") Integer pn
+    ) {
+        PageHelper.startPage(pn, 10);
+        List<Sale> sales = saleServiceImp.getallNull();
+        PageInfo<Sale> pageInfo = new PageInfo<Sale>(sales);
+        model.addAttribute("pageInfo", pageInfo);
+        return "getHistory_sale";
+
+    }
 //  查询单个
 
     @RequestMapping("/getbyid")
