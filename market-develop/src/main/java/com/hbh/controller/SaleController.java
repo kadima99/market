@@ -48,6 +48,17 @@ public class SaleController {
     }
 //    删除
 
+    @RequestMapping("/addRole.do")
+    public String addRole(String zhi){
+
+        String[] split = zhi.split(",");
+        for (int i = 0; i < split.length; i++) {
+            String string = split[i];
+            saleServiceImp.pay(string);
+        }
+        return "redirect:getall";
+    }
+
     @RequestMapping("/delete")
     public String delete(String saleid) {
         saleServiceImp.delete(saleid);

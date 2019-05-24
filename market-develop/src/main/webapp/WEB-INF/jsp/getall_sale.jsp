@@ -1,6 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@include file="common/head.jsp" %>
+<script type="text/javascript">
+    var zhi
+    function addClick(){
+        $(document).ready(function(){
+            var idsstr = "";
+            var zhi = "";
+            $(".mian_b_bg_xz input[name=checkbox]").each(function(){ //遍历table里的全部checkbox
+                idsstr += $(this).val() + ","; //获取所有checkbox的值
+
+                if($(this).is(':checked')) //如果被选中
+                    zhi += $(this).val() + ","; //获取被选中的值
+            });
+            if(idsstr.length > 0) //如果获取到
+                idsstr = idsstr.substring(0, idsstr.length - 1); //把最后一个逗号去掉
+            if(zhi.length > 0) //如果获取到
+                zhi = zhi.substring(0, zhi.length - 1); //把最后一个逗号去掉
+            // alert("所有checkbox的值：" + idsstr);
+            // alert("被选中checkbox的值：" + zhi);
+            document.form.action="addRole.do?zhi="+zhi
+            document.form.submit()
+        });
+    }
+
+</script>
 <div class="right_col" role="main">
     <div class="clearfix"></div>
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -39,9 +63,10 @@
 
                 </form>
             </div>
+            <form action="" method="post" name="form">
             <div class="row">
                 <div class="x_content">
-                    <table id="datatable" class="table table-striped table-bordered table-hover">
+                    <table id="datatable" class="table table-striped table-bordered table-hover mian_b_bg_xz">
                         <tr>
                             <th>订单id</th>
                             <th>商品id</th>
@@ -56,6 +81,7 @@
                         </tr>
                         <c:forEach items="${pageInfo.list}" var="sale">
                             <tr>
+                                <th><input name="checkbox" type="checkbox" value="${sale.saleid}"></th>
                                 <th>${sale.saleid}</th>
                                 <th>${sale.proid}</th>
                                 <th>${sale.pname}</th>
@@ -78,6 +104,8 @@
                     </table>
                 </div>
             </div>
+                <input type="button" value="一键结账" onclick="addClick()" >
+            </form>
             <!-- 显示分页信息 -->
             <div class="row">
                 <!--分页文字信息  -->

@@ -57,6 +57,17 @@ public class MSaleController {
         return "redirect:getall";
 
     }
+    @RequestMapping("/addRole.do")
+    public String addRole(String zhi){
+
+        String[] split = zhi.split(",");
+        for (int i = 0; i < split.length; i++) {
+            String string = split[i];
+           saleServiceImp.pay(string);
+            System.out.println(string);
+        }
+        return "redirect:getall";
+    }
 //    删除
 
     @RequestMapping("/delete")
